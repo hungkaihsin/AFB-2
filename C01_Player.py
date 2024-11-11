@@ -108,6 +108,16 @@ class Player():
 
 
     def compete(self, enumed_attribute):
+        if self.get_attribute(enumed_attribute) == E.ATR1:
+            return self.get_attribute(enumed_attribute) + r.randint(1, 6)
+        elif self.get_attribute(enumed_attribute) == E.ATR2:
+            return self.get_attribute(enumed_attribute) + r.randint(1, 6)
+        elif self.get_attribute(enumed_attribute) == E.ATR3:
+            return self.get_attribute(enumed_attribute) + r.randint(1, 6)
+        else:
+            raise RequirementNotMet
+
+
         # returns an integer which is a reflection of the players performance with this attribute
         return r.randint(1,6)   # this is bad code as it doesn't consider the enumed attribute
 

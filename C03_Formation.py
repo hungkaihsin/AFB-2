@@ -21,11 +21,11 @@ class Formation:
             # calculate distance
             # if distance < d
             # add to return
-                
+         pass     
             
     # note this is distance in terms of both rows and columns
     # if location was 71 then x,y = 8,3
-        pass
+        
 
 def main_test_formation():
     print('main test formation:')
