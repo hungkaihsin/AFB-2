@@ -9,9 +9,11 @@ class Player():
     nameset = set()
     def __init__(self, name = None, position = None) -> None:
         # Position must be set to a value that is in Enums.E.POSITIONS if not raise exception RequirementNotMet
-        if position not in E.POSITIONS:
+        if position is None:
+            position = E.POSITIONS[0]  # Assuming E.POSITIONS[0] is a valid default
+        elif position not in E.POSITIONS:
             raise RequirementNotMet
-        self.position = position
+
         
         self.attribute1 = r.randint(E.MIN, E.MAX) # These should be changed to be random and reflect the range from min to max in some way
         self.attribute2 = r.randint(E.MIN, E.MAX) 
@@ -66,45 +68,41 @@ class Player():
         # return None # modify this return
     
     def get_col_row_from_location(self):
-        # TODO: this is new !!!!!
-        #3 OFFENSE   801   802   803  804      80 71 72 73 74 75 86         806      807      808      809
-        #4:        811   812   813  814               13                  816      817      818      819 
-        #5:                                        42 43 44
-        #6:                                     21 22 23 24 25
-        
-        
-        # these locations are ported to a columns and rows
-        # where 73 is col 10, row 3
-        # there is a space of 3 between 804 and 80 and 86 and 806
-        # crib sheet:
-            # 801 1 3
-            # 802 2 3
-            # 803 3 3
-            # 804 4 3
-            # 80 7 3
-            # 71 8 3
-            # 72 9 3
-            # 73 10 3
-            # 74 11 3
-            # 75 12 3
-            # 86 13 3
-            # 806 16 3
-            # 807 17 3
-            # 808 18 3
+
+        # Expanded location map with new mappings from the provided diagram
         location_map = {
-        801: (1, 3), 802: (2, 3), 803: (3, 3), 804: (4, 3),
-        80: (7, 3), 71: (8, 3), 72: (9, 3), 73: (10, 3),
-        74: (11, 3), 75: (12, 3), 86: (13, 3), 806: (16, 3),
-        807: (17, 3), 808: (18, 3), 809: (19, 3),
-        811: (1, 4), 812: (2, 4), 813: (3, 4), 814: (4, 4),
-        13: (7, 4), 816: (16, 4), 817: (17, 4), 818: (18, 4), 819: (19, 4),
-        42: (11, 5), 43: (12, 5), 44: (13, 5),
-        21: (8, 6), 22: (9, 6), 23: (10, 6), 24: (11, 6), 25: (12, 6)
+            801: (1, 3), 802: (2, 3), 803: (3, 3), 804: (4, 3),
+            80: (7, 3), 71: (8, 3), 72: (9, 3), 73: (10, 3),
+            74: (11, 3), 75: (12, 3), 86: (13, 3), 806: (16, 3),
+            807: (17, 3), 808: (18, 3), 809: (19, 3),
+            
+            # New locations based on the additional comments
+            941: (2, 2), 942: (7, 2), 943: (13, 2), 944: (19, 2),
+            931: (1, 2), 932: (8, 2), 933: (19, 2),
+            531: (5, 1), 532: (13, 1),
+            
+            201: (1, 1), 202: (2, 1), 203: (3, 1), 204: (4, 1),
+            50: (7, 1), 51: (8, 1), 52: (9, 1), 53: (10, 1),
+            54: (11, 1), 55: (12, 1), 56: (13, 1), 206: (16, 1),
+            207: (17, 1), 208: (18, 1), 209: (19, 1),
+            
+            # Defense positions (Backfield Eligible)
+            811: (1, 0), 812: (2, 0), 3: (5, 0),
+            42: (11, -1), 43: (12, -1), 44: (13, -1),
+            21: (8, -2), 22: (9, -2), 23: (10, -2),
+            24: (11, -2), 25: (12, -2),
+            
+            # Pass zones
+            41: (2, -1), 31: (5, -1), 32: (8, -1), 33: (13, -1)
         }
+        
+        # Retrieve the column and row for the given location
         if self.location in location_map:
             col, row = location_map[self.location]
+        else:
+            col, row = None, None  # Handle cases where location is not mapped
+
         return col, row
-    
 
 
     def compete(self, enumed_attribute):
