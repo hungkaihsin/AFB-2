@@ -11,8 +11,12 @@ class Player():
         # Position must be set to a value that is in Enums.E.POSITIONS if not raise exception RequirementNotMet
         if position is None:
             position = E.POSITIONS[0]  # Assuming E.POSITIONS[0] is a valid default
-        elif position not in E.POSITIONS:
-            raise RequirementNotMet
+        elif position not in [pos[1] for pos in E.POSITIONS]:
+            raise RequirementNotMet("Position not recognized.")
+        
+        
+        self.position = position
+
 
         
         self.attribute1 = r.randint(E.MIN, E.MAX) # These should be changed to be random and reflect the range from min to max in some way

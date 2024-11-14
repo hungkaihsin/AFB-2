@@ -59,15 +59,8 @@ class E:
     HL = 135,'HL',1 # Holder for PAT
     
     
-    # Serve their purpose but never need location information
-    K = 131,'K' # Kicker
-    P = 132,'P' # Punter
-    KR = 133,'KR' # Kick returner
-    PR = 134,'PR' # Punt returner
-    LS = 135,'LS' # Long snapper
-    HL = 135,'HL' # Holder for PAT
     
-    POSITIONS = [QB,WR,RB,LT,LG,C,RG, RT, FB,TE,LB,CB,DL,S,K,P,KR,PR,LS,HL]
+    POSITIONS = [QB,WR,RB,LT,LG,C,RG,RT,FB,TE,LB,CB,DL,S,K,P,KR,PR,LS,HL]
 
     # offense and defense always have 11 players on the field
     PLAYER_VARS = ['first_name','last_name','name','position','is_blitzing','on_field','scheme_mod', 'number']
