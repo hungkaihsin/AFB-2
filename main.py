@@ -9,5 +9,5 @@ from C05_Defensive_Formation import main_test_defensive_formation
 # main_test_player()
 # main_test_team()
 # main_test_formation()
-main_test_offensive_formation()
-# main_test_defensive_formation()
+# main_test_offensive_formation()
+main_test_defensive_formation()
