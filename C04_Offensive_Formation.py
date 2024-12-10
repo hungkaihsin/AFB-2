@@ -1,4 +1,4 @@
-from Enums import E, RequirementNotMet
+from Enums import E
 from C02_Team import Team as T
 from C03_Formation import Formation
 from C06_Field import Field
@@ -28,9 +28,9 @@ class OffensiveFormation(Formation):
 
     def lineup(self, team):
         self.set_on_field(team)
-        print("Setting up lineup...")
+        print(f"Setting up {self.name} lineup...")
 
-        # Set linemen positions (fixed)
+        # Linemen positions
         linemen_positions = [71, 72, 73, 74, 75]
         linemen_roles = [E.LT, E.LG, E.C, E.RG, E.RT]
         for role, position in zip(linemen_roles, linemen_positions):
@@ -40,7 +40,7 @@ class OffensiveFormation(Formation):
                 linemen[0].on_field = True
                 print(f"Assigned {linemen[0].name} - Position: {linemen[0].position} - Location: {linemen[0].location}")
 
-        # Set QB position
+        # QB position
         qbs = team.get_players_at_position(E.QB[1])
         if qbs:
             qb = qbs[0]
@@ -48,15 +48,15 @@ class OffensiveFormation(Formation):
             qb.on_field = True
             print(f"Assigned QB ({qb.name}) - Location set to {qb.location}")
 
-        # WR, TE, FB, RB positions
+        # WR, TE, RB, FB positions
         for position_list, players, position_name in zip(
-            [self.wrs, self.tes, self.fbs, self.rbs], 
-            [team.get_players_at_position(E.WR[1]), 
-             team.get_players_at_position(E.TE[1]), 
-             team.get_players_at_position(E.FB[1]), 
-             team.get_players_at_position(E.RB[1])],
-            ["WR", "TE", "FB", "RB"]):
-            
+            [self.wrs, self.tes, self.rbs, self.fbs],
+            [team.get_players_at_position(E.WR[1]),
+             team.get_players_at_position(E.TE[1]),
+             team.get_players_at_position(E.RB[1]),
+             team.get_players_at_position(E.FB[1])],
+            ["WR", "TE", "RB", "FB"]):
+
             for i, location in enumerate(position_list):
                 if i < len(players):
                     players[i].location = location
