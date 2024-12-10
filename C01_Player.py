@@ -17,10 +17,10 @@ class Player:
         self.attribute2 = r.randint(E.MIN, E.MAX)
         self.attribute3 = r.randint(E.MIN, E.MAX)
         
-        df = pd.read_csv('data/Names.csv')
+        df = pd.read_csv('data/first_name_last_name.csv')
         while True:
-            self.first_name = df['first_name'].sample().values[0]
-            self.last_name = df['last_name'].sample().values[0]
+            self.first_name = df['First Name'].sample().values[0]
+            self.last_name = df['Last Name'].sample().values[0]
             self.name = f"{self.first_name} {self.last_name}"
             if self.name not in Player.nameset:
                 Player.nameset.add(self.name)
