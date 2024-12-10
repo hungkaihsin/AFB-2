@@ -1,4 +1,4 @@
-from class C07_Offensive_Play import Offensive_Play
+from C07_Offensive_Play import Offensive_Play
 
 class Offensive_Run_Play(Offensive_Play):
     def __init__(self, name, formation, ball_carrier, zone):
