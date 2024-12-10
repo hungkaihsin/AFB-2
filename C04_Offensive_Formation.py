@@ -28,8 +28,6 @@ class OffensiveFormation(Formation):
 
     def lineup(self, team):
         self.set_on_field(team)
-        print(f"Setting up {self.name} lineup...")
-
         # Linemen positions
         linemen_positions = [71, 72, 73, 74, 75]
         linemen_roles = [E.LT, E.LG, E.C, E.RG, E.RT]
@@ -38,7 +36,6 @@ class OffensiveFormation(Formation):
             if linemen:
                 linemen[0].location = position
                 linemen[0].on_field = True
-                print(f"Assigned {linemen[0].name} - Position: {linemen[0].position} - Location: {linemen[0].location}")
 
         # QB position
         qbs = team.get_players_at_position(E.QB[1])
@@ -46,7 +43,6 @@ class OffensiveFormation(Formation):
             qb = qbs[0]
             qb.location = 23 if self.shotgun else 13
             qb.on_field = True
-            print(f"Assigned QB ({qb.name}) - Location set to {qb.location}")
 
         # WR, TE, RB, FB positions
         for position_list, players, position_name in zip(
@@ -61,7 +57,6 @@ class OffensiveFormation(Formation):
                 if i < len(players):
                     players[i].location = location
                     players[i].on_field = True
-                    print(f"Assigned {players[i].name} - Position: {position_name} - Location set to {players[i].location}")
 
     def get_eligible_receivers(self):
         eligible_positions = [E.WR, E.TE, E.RB, E.FB]
@@ -69,22 +64,11 @@ class OffensiveFormation(Formation):
 
 def test_formation(f, t):
     f.lineup(t)
-    print("\nVerification: Players with on_field set to True and their locations:")
-    for player in t.players:
-        if player.on_field:
-            print(f"{player.name} - Position: {player.position} - Location: {player.location}")
-
-    print("\nPlayers and their assigned locations before grid update:")
-    for player in t.players:
-        if player.on_field:
-            print(f"{player.name} - Position: {player.position} - Location: {player.location}")
-    
+   
     field = Field()
     valid = field.update_grid(t, None)
     if valid:
         field.display_grid()
-    else:
-        print("Field update failed, check player locations.")
 
 def main_test_offensive_formation():
     print("main test offensive formation:")

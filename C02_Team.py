@@ -37,9 +37,7 @@ class Team:
                 # Create a Player object with the specified position
                 player = Player(position=position_name)
                 self.players.append(player)
-
-        print(f"Team '{self.name}' created with {len(self.players)} players.")
-
+                
         
 
     def get_name_and_position_of_players_on_field(self):
@@ -52,8 +50,6 @@ def main_test_team():
     t = Team()
     # you should add code here to test functionality
     t.create_default_team()
-    for player in t.players:
-        print(f"{player.name} - Position: {player.position}")
 
     # Example of getting players on the field
     players_on_field = t.get_name_and_position_of_players_on_field()

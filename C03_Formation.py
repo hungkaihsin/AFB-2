@@ -62,13 +62,9 @@ def main_test_formation():
 
     # Test players on the field (this should show only those in specified positions)
     players_on_field = team.get_players_on_field()
-    for player in players_on_field:
-        print(f"{player.name} - Position: {player.position} - On Field: {player.on_field}")
+
 
     # Example location to find nearby players (e.g., center of the field at (10, 3))
     location = (10, 3)
     d = 5  # Define distance
     nearby_players = formation.get_players_within_d_distance_of_location(d, location, team)
-    print(f"Players within {d} units of location {location}:")
-    for player in nearby_players:
-        print(f"{player.name} - Position: {player.position}")

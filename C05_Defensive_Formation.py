@@ -26,7 +26,6 @@ class DefensiveFormation(Formation):
 
     def lineup(self, team):
         self.set_on_field(team)
-        print(f"Setting up {self.name} defensive lineup...")
 
         # Assign Defensive Linemen
         for i, location in enumerate(self.dl):
@@ -34,7 +33,6 @@ class DefensiveFormation(Formation):
             if i < len(dl_players):
                 dl_players[i].location = location
                 dl_players[i].on_field = True
-                print(f"Assigned {dl_players[i].name} - Position: DL - Location set to {dl_players[i].location}")
 
         # Assign Linebackers
         for i, location in enumerate(self.lbs):
@@ -42,7 +40,6 @@ class DefensiveFormation(Formation):
             if i < len(lb_players):
                 lb_players[i].location = location
                 lb_players[i].on_field = True
-                print(f"Assigned {lb_players[i].name} - Position: LB - Location set to {lb_players[i].location}")
 
         # Assign Cornerbacks
         for i, location in enumerate(self.cbs):
@@ -50,7 +47,6 @@ class DefensiveFormation(Formation):
             if i < len(cb_players):
                 cb_players[i].location = location
                 cb_players[i].on_field = True
-                print(f"Assigned {cb_players[i].name} - Position: CB - Location set to {cb_players[i].location}")
 
         # Assign Safeties
         for i, location in enumerate(self.safeties):
@@ -58,19 +54,8 @@ class DefensiveFormation(Formation):
             if i < len(s_players):
                 s_players[i].location = location
                 s_players[i].on_field = True
-                print(f"Assigned {s_players[i].name} - Position: S - Location set to {s_players[i].location}")
-
 def test_formation(f, t):
     f.lineup(t)
-    print("\nVerification: Players with on_field set to True and their locations:")
-    for player in t.players:
-        if player.on_field:
-            print(f"{player.name} - Position: {player.position} - Location: {player.location}")
-
-    print("\nPlayers and their assigned locations before grid update:")
-    for player in t.players:
-        if player.on_field:
-            print(f"{player.name} - Position: {player.position} - Location: {player.location}")
     
     field = Field()
     valid = field.update_grid(t, None)

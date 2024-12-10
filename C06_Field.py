@@ -25,9 +25,6 @@ class Field:
                         if col is not None and row is not None:
                             # Place player's position symbol on the grid
                             self.grid[col][row] = ' ' + player.position[1]
-                            print(f"Placed {player.name} ({player.position}) at ({col}, {row})")
-                        else:
-                            print(f"Warning: Invalid location for {player.name} ({player.position})")
                     except Exception as e:
                         print(f"Error placing {player.name} ({player.position}): {e}")
         
