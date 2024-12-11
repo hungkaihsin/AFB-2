@@ -27,79 +27,81 @@ class OffensiveFormation(Formation):
             player.on_field = False
 
     def lineup(self, team):
+        # Reset all players' on_field status
         self.set_on_field(team)
-        # Linemen positions
-        linemen_positions = [71, 72, 73, 74, 75]
-        linemen_roles = [E.LT, E.LG, E.C, E.RG, E.RT]
-        
-        position_check_list = []
 
-        for role, position in zip(linemen_roles, linemen_positions):
-            
+        # Assign Offensive Linemen (LT, LG, C, RG, RT)
+        offensive_line_positions = [71, 72, 73, 74, 75]
+        offensive_line_roles = [E.LT, E.LG, E.C, E.RG, E.RT]
+
+        for role, position in zip(offensive_line_roles, offensive_line_positions):
             linemen = team.get_players_at_position(role)
-            # if len(position_check_list) != 0:
-            #     break
+            if linemen:
+                linemen[0].location = position
+                linemen[0].on_field = True
 
-            # if count != 0 :
-            #     break
-
-            if linemen not in position_check_list:
-                count = 0
-                for index in linemen:
-                    if count > 0:
-                        break
-                    index.location = position
-                    index.on_field = True
-                    position_check_list.append(index)
-                    count += 1
+        # Assign Quarterback (QB)
 
 
+        qb_positions = [42]  # Example QB positions
+        qbs = team.get_players_at_position(E.QB)
 
-                
-
-        # QB position
-        QB_position = [13]
-        QB_role = [E.QB]
-        result_QB = []
-
-        for role, position in zip(QB_role, QB_position):
-            qbs = team.get_players_at_position(role)
-
-            if qbs not in result_QB:
-                count = 0
-                for index in qbs:
-                    if count > 0:
-                        break
-
-                    index.position = position
-                    index.on_field = True
-                    result_QB.append(index)
-                    count += 1
-
-        
-    
-
-
-        # WR, TE, RB, FB positions
-        position_role = [E.WR, E.TE, E.RB, E.FB]
-        WR_TE_RB_FB_position = [800, 80, 20, 40]
-
-        WR_check_list = []
+        for position in qb_positions:
+            if qbs:  # Ensure there are available QBs to assign
+                qb = qbs[0]  # Get the first QB
+                qb.location = position
+                qb.on_field = True
+                qbs.pop(0)  # Remove the assigned QB from the list
 
 
 
-        for role, position in zip(position_role, WR_TE_RB_FB_position):
-            player = team.get_players_at_position(role)
+        # Assign Wide Receivers (WR)
+        wr_positions_left = [801, 802, 803, 804]  # Left-side WR positions
+        wr_positions_right = [806, 807, 808, 809]  # Right-side WR positions
 
-            if player not in WR_check_list:
-                count = 0
-                for index in player:
-                    if count > 0:
-                        break
-                    index.location = position
-                    index.on_field = True
-                    WR_check_list.append(index)
-                    count += 1
+        wrs = team.get_players_at_position(E.WR)
+        num_left = len(wr_positions_left)
+        num_right = len(wr_positions_right)
+
+        # Assign left-side WRs
+        for i, position in enumerate(wr_positions_left):
+            if i < len(wrs):
+                wrs[i].location = position
+                wrs[i].on_field = True
+
+        # Assign right-side WRs
+        for i, position in enumerate(wr_positions_right):
+            if i + num_left < len(wrs):  # Continue from the next WR
+                wrs[i + num_left].location = position
+                wrs[i + num_left].on_field = True
+
+
+
+
+
+        # Assign Tight Ends (TE)
+        te_positions = [803]  # Example TE position
+        tes = team.get_players_at_position(E.TE)
+        for i, position in enumerate(te_positions):
+            if i < len(tes):
+                tes[i].location = position
+                tes[i].on_field = True
+
+        # Assign Fullbacks (FB)
+        fb_positions = [24]  # Example FB position
+        fbs = team.get_players_at_position(E.FB)
+        for i, position in enumerate(fb_positions):
+            if i < len(fbs):
+                fbs[i].location = position
+                fbs[i].on_field = True
+
+        # Assign Running Backs (RB)
+        rb_positions = [25]  # Example RB position
+        rbs = team.get_players_at_position(E.RB)
+        for i, position in enumerate(rb_positions):
+            if i < len(rbs):
+                rbs[i].location = position
+                rbs[i].on_field = True
 
 
 
