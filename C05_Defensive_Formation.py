@@ -28,32 +28,38 @@ class DefensiveFormation(Formation):
         self.set_on_field(team)
 
         # Assign Defensive Linemen
-        for i, location in enumerate(self.dl):
-            dl_players = team.get_players_at_position(E.DL[1])
-            if i < len(dl_players):
-                dl_players[i].location = location
-                dl_players[i].on_field = True
+
+        dl_positions = [90, 91, 92, 93, 94, 95]
+        dls = team.get_players_at_position(E.DL)
+        for i, position in enumerate(dl_positions):
+            if i < len(dls):
+                dls[i].location = position
+                dls[i].on_field = True
 
         # Assign Linebackers
-        for i, location in enumerate(self.lbs):
-            lb_players = team.get_players_at_position(E.LB[1])
-            if i < len(lb_players):
-                lb_players[i].location = location
-                lb_players[i].on_field = True
+        lb_positions = [50, 52, 54]
+        lbs = team.get_players_at_position(E.LB)
+        for i, position in enumerate(lb_positions):
+            if i < len(lbs):
+                lbs[i].location = position
+                lbs[i].on_field = True
 
+        
         # Assign Cornerbacks
-        for i, location in enumerate(self.cbs):
-            cb_players = team.get_players_at_position(E.CB[1])
-            if i < len(cb_players):
-                cb_players[i].location = location
-                cb_players[i].on_field = True
+        cb_positions = [22, 25, 26, 27]
+        cbs = team.get_players_at_position(E.CB)
+        for i, position in enumerate(cb_positions):
+            if i < len(cbs):
+                cbs[i].location = position
+                cbs[i].on_field = True
 
         # Assign Safeties
-        for i, location in enumerate(self.safeties):
-            s_players = team.get_players_at_position(E.S[1])
-            if i < len(s_players):
-                s_players[i].location = location
-                s_players[i].on_field = True
+        safety_positions = [21, 44]
+        safeties = team.get_players_at_position(E.S)
+        for i, position in enumerate(safety_positions):
+            if i < len(safeties):
+                safeties[i].location = position
+                safeties[i].on_field = True
 def test_formation(f, t):
     f.lineup(t)
     
@@ -63,6 +69,7 @@ def test_formation(f, t):
         field.display_grid()
     else:
         print("Field update failed, check player locations.")
+    print("\n" + "-" * 50 + "\n") # for divide groups
 
 def main_test_defensive_formation():
     print("main test defensive formation:")

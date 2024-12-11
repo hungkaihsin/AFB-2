@@ -67,6 +67,7 @@ class Player:
         
         # Cornerback and Safety Positions (CB and S)
         22: (9, -2), 23: (10, -2), 25: (12, -2), 26: (13, -2),
+        27: (13, -2),
         
         # Eligible Positions and Zones
         941: (2, 2), 942: (7, 2), 943: (13, 2), 944: (19, 2),

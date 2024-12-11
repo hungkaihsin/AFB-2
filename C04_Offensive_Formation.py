@@ -132,6 +132,8 @@ def test_formation(f, t):
     valid = field.update_grid(t, None)
     if valid:
         field.display_grid()
+    print("\n" + "-" * 50 + "\n") # for divide group
+
 
 def main_test_offensive_formation():
     print("main test offensive formation:")
