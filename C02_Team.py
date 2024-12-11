@@ -35,7 +35,7 @@ class Team:
             position_id, position_name, count = pos_info
             for _ in range(count):
                 # Create a Player object with the specified position
-                player = Player(position=position_name)
+                player = Player(position=pos_info)
                 self.players.append(player)
                 
         

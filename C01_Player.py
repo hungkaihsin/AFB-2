@@ -4,12 +4,19 @@ from Enums import E, RequirementNotMet
 
 class Player:
     nameset = set()
-    def __init__(self, name=None, position=None):
+    def __init__(self, position=None,name=None):
         # Ensure the position is set to a value that exists in E.POSITIONS
-        if position is None:
-            position = E.POSITIONS[0][1]  # Default to the name of the first position in E.POSITIONS
-        elif position not in [pos[1] for pos in E.POSITIONS]:
+
+        if position not in E.POSITIONS:
             raise RequirementNotMet("Position not recognized.")
+        
+             
+
+
+        # if position is None:
+        #     position = E.POSITIONS # Default to the name of the first position in E.POSITIONS
+        # elif position not in [pos[1] for pos in E.POSITIONS]:
+        #     raise RequirementNotMet("Position not recognized.")
         
         self.position = position
 
@@ -72,12 +79,13 @@ class Player:
         25: (13, 2),  
         26: (14, 2), 
 
-
-
         }
+
     
 
         # Retrieve column and row for the given location
+
+
         return location_map.get(self.location, (None, None))
 
     def compete(self, enumed_attribute):
@@ -85,7 +93,7 @@ class Player:
 
 def main_test_player():
     print('main test player:')
-    p = Player(position='FB')  # Use the position name 'FB'
+    p = Player(E.FB)  # Use the position name 'FB'
     p.location = 43
     col, row = p.get_col_row_from_location()
     print("COL ROW:", col, row)
