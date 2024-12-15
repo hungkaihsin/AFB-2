@@ -141,7 +141,7 @@ def main_test_offensive_formation():
     t.create_default_team()
     f1 = OffensiveFormation('Single Back', tes=[80], fbs=[], rbs=[23], wrs=[801, 803, 806])
     f2 = OffensiveFormation('I-Back', tes=[86], fbs=[33], rbs=[23], wrs=[801, 806])
-    f3 = OffensiveFormation('Trips Right', tes=[80], wrs=[805, 806, 807], rbs=[23], shotgun=True)
+    f3 = OffensiveFormation('Trips Right', tes=[80], wrs=[805, 806, 807], rbs=[23], shotgun=True) # no 805 in location map
     test_formation(f1, t)
     test_formation(f2, t)
     test_formation(f3, t)
