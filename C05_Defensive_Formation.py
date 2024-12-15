@@ -31,7 +31,7 @@ class DefensiveFormation(Formation):
 
         dl_positions = [90, 91, 92, 93, 94, 95]
         dls = team.get_players_at_position(E.DL)
-        for i, position in enumerate(dl_positions):
+        for i, position in enumerate(self.dl):
             if i < len(dls):
                 dls[i].location = position
                 dls[i].on_field = True
@@ -39,7 +39,7 @@ class DefensiveFormation(Formation):
         # Assign Linebackers
         lb_positions = [50, 52, 54]
         lbs = team.get_players_at_position(E.LB)
-        for i, position in enumerate(lb_positions):
+        for i, position in enumerate(self.lbs):
             if i < len(lbs):
                 lbs[i].location = position
                 lbs[i].on_field = True
@@ -48,7 +48,7 @@ class DefensiveFormation(Formation):
         # Assign Cornerbacks
         cb_positions = [22, 25, 26, 27]
         cbs = team.get_players_at_position(E.CB)
-        for i, position in enumerate(cb_positions):
+        for i, position in enumerate(self.cbs):
             if i < len(cbs):
                 cbs[i].location = position
                 cbs[i].on_field = True
@@ -56,7 +56,7 @@ class DefensiveFormation(Formation):
         # Assign Safeties
         safety_positions = [21, 44]
         safeties = team.get_players_at_position(E.S)
-        for i, position in enumerate(safety_positions):
+        for i, position in enumerate(self.safeties):
             if i < len(safeties):
                 safeties[i].location = position
                 safeties[i].on_field = True

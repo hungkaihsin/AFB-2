@@ -64,16 +64,16 @@ class OffensiveFormation(Formation):
         num_right = len(wr_positions_right)
 
         # Assign left-side WRs
-        for i, position in enumerate(wr_positions_left):
+        for i, position in enumerate(self.wrs):
             if i < len(wrs):
                 wrs[i].location = position
                 wrs[i].on_field = True
 
-        # Assign right-side WRs
-        for i, position in enumerate(wr_positions_right):
-            if i + num_left < len(wrs):  # Continue from the next WR
-                wrs[i + num_left].location = position
-                wrs[i + num_left].on_field = True
+        # # Assign right-side WRs
+        # for i, position in enumerate(wr_positions_right):
+        #     if i + num_left < len(wrs):  # Continue from the next WR
+        #         wrs[i + num_left].location = position
+        #         wrs[i + num_left].on_field = True
 
 
 
@@ -82,7 +82,7 @@ class OffensiveFormation(Formation):
         # Assign Tight Ends (TE)
         te_positions = [803]  # Example TE position
         tes = team.get_players_at_position(E.TE)
-        for i, position in enumerate(te_positions):
+        for i, position in enumerate(self.tes):
             if i < len(tes):
                 tes[i].location = position
                 tes[i].on_field = True
@@ -90,7 +90,7 @@ class OffensiveFormation(Formation):
         # Assign Fullbacks (FB)
         fb_positions = [24]  # Example FB position
         fbs = team.get_players_at_position(E.FB)
-        for i, position in enumerate(fb_positions):
+        for i, position in enumerate(self.fbs):
             if i < len(fbs):
                 fbs[i].location = position
                 fbs[i].on_field = True
@@ -98,7 +98,7 @@ class OffensiveFormation(Formation):
         # Assign Running Backs (RB)
         rb_positions = [25]  # Example RB position
         rbs = team.get_players_at_position(E.RB)
-        for i, position in enumerate(rb_positions):
+        for i, position in enumerate(self.rbs):
             if i < len(rbs):
                 rbs[i].location = position
                 rbs[i].on_field = True
